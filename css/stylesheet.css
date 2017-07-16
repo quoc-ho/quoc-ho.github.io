@@ -5,13 +5,15 @@
 @media screen and (min-width: 1000px) { body { max-width: 850px; }
   body header { flex-direction: row; }
   body .papers { flex-direction: row; } }
-body { font-family: Neuton, serif; margin-top: 0em; margin-left: auto; margin-right: auto; }
+body { font-family: 'Lora', serif; margin-top: 0.5em; margin-left: auto; margin-right: auto; margin-bottom: 2em}
 
 * a { text-decoration: none; }
 * a:hover { text-decoration: underline; }
 * a:focus { outline: none; }
 
-h1, h2, h3, h4 { font-family: Neuton, serif; font-weight: lighter; }
+h1, h2, h3, h4 { font-family: 'Lora', serif; font-weight: lighter; }
+
+p {font-family: 'Lora', serif; font}
 
 ul { padding-left: 1em; }
 
@@ -24,7 +26,9 @@ ol li ol li { list-style-type: lower-alpha; }
 
 .papers { padding: 0em; margin: 0em; border-top: dotted 0.1em; display: flex; flex-direction: column; justify-content: space-between; }
 .papers content {flex-basis: 80%}
-.papers p { padding: 0em; margin: 0.5em 0em; }
+.papers p { padding: 0em; margin: 1em 0em; }
+.papers abstract {font-size: 90%}
+.papers abstract abstractTit {font-weight: bold; font-size: 95%}
 
 .bibliography table { text-align: left; border-collapse: collapse; }
 .bibliography table th, .bibliography table td { padding: 0.5em; }
@@ -35,8 +39,8 @@ ol li ol li { list-style-type: lower-alpha; }
 
 .bibliography table td:last-child, footer { font-size: 80%; }
 
-header { font-family: Neuton; font-size: 110%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; margin-top: 0em; margin-bottom: 2em; padding-top: 0.5em; padding-bottom: 0.2em; }
-header h1 { text-align: center; margin: 0em; }
+header { font-family: 'Lora', serif; display: flex; flex-direction: column; justify-content: space-between; align-items: baseline; margin-top: 0em; margin-bottom: 2em; padding-top: 0.5em; padding-bottom: 0.2em; }
+header h1 { font-family: 'Lora', serif; text-align: center; margin: 0em; }
 
 .intro { display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
 
@@ -59,7 +63,7 @@ body ::-selection { background-color: #cb4b16; color: #eee8d5; }
 
 a, a:active, a:visited { color: #268bd2; }
 
-code { color: #d33682; }
+code { color: #d33682; font-size: 110%}
 
 h1, h2, h3, h4, h5, h6 { color: #cb4b16; }
 h1 a, h1 a:active, h1 a:visited, h2 a, h2 a:active, h2 a:visited, h3 a, h3 a:active, h3 a:visited, h4 a, h4 a:active, h4 a:visited, h5 a, h5 a:active, h5 a:visited, h6 a, h6 a:active, h6 a:visited { color: #cb4b16; }
