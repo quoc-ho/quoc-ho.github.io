@@ -13,7 +13,7 @@ body { font-family: 'Lora', serif; margin-top: 0.5em; margin-left: auto; margin-
 
 h1, h2, h3, h4 { font-family: 'Lora', serif; font-weight: lighter; }
 
-p {font-family: 'Lora', serif; font}
+p {font-family: 'Lora', serif;}
 
 ul { padding-left: 1em; }
 
@@ -26,7 +26,7 @@ ol li ol li { list-style-type: lower-alpha; }
 
 .papers { padding: 0em; margin: 0em; border-top: dotted 0.05em; display: flex; flex-direction: column; justify-content: space-between; }
 .papers content {flex-basis: 80%}
-.papers p { padding: 0em; margin: 1em 0em; }
+.papers content p { padding: 0em; margin: 1em 0em; text-align:justify;}
 .papers abstract {font-size: 90%}
 .papers abstract abstractTit {font-weight: bold; font-size: 95%; }
 
