@@ -109,6 +109,10 @@ ol li ol li {
   font-weight: bold;
 }
 
+.papers>content>em {
+  font-size: 95%;
+}
+
 .papers abstract>p {
   font-size: 90%;
   margin-block-start: 0.25em;
@@ -119,6 +123,10 @@ ol li ol li {
 .papers abstract abstractTit {
   font-weight: bold;
   font-size: 90%;
+}
+
+links {
+  margin-top: 0.8em;
 }
 
 .papers links a {
