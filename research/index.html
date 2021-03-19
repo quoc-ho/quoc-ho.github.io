@@ -12,6 +12,19 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Neuton:400,400i,700,700i' rel='stylesheet'>
   <link rel="icon" href="https://static.ist.ac.at/ist/images/favicon.ico" />
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102623069-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102623069-1');
+  </script>
 </head>
 
 <body>
@@ -60,17 +73,23 @@
       <em>Preprint. Last updated: March 2021.</em></br>
       <abstract>
         <p>
-          <abstractTit>Abstract:</abstractTit> Motivated by spectral gluing patterns in the Betti Langlands program, we show that for
-          any reductive group \(G\), a parabolic subgroup \(P\), and a topological surface \(M\), the (enhanced) spectral
+          <abstractTit>Abstract:</abstractTit> Motivated by spectral gluing patterns in the Betti Langlands program, we
+          show that for
+          any reductive group \(G\), a parabolic subgroup \(P\), and a topological surface \(M\), the (enhanced)
+          spectral
           Eisenstein series category of \(M\) is the factorization homology over \(M\) of the \(\mathrm{E}_2\)-Hecke
-          category \(\mathrm{H}_{G, P} = \mathrm{IndCoh}(\mathrm{LS}_{G, P}(D^2, S^1))\), where \(\mathrm{LS}_{G, P}(D^2,
-          S^1)\) denotes the moduli stack of \(G\)-local systems on a disk together with a \(P\)-reduction on the boundary
+          category \(\mathrm{H}_{G, P} = \mathrm{IndCoh}(\mathrm{LS}_{G, P}(D^2, S^1))\), where \(\mathrm{LS}_{G,
+          P}(D^2,
+          S^1)\) denotes the moduli stack of \(G\)-local systems on a disk together with a \(P\)-reduction on the
+          boundary
           circle.
           More generally, for any pair of stacks \(\mathcal{Y}\to \mathcal{Z}\) satisfying some mild conditions and any
           map between topological spaces \(N\to M\), we define \((\mathcal{Y}, \mathcal{Z})^{N, M} = \mathcal{Y}^N
-          \times_{\mathcal{Z}^N} \mathcal{Z}^M\) to be the space of maps from \(M\) to \(\mathcal{Z}\) along with a lift to
+          \times_{\mathcal{Z}^N} \mathcal{Z}^M\) to be the space of maps from \(M\) to \(\mathcal{Z}\) along with a lift
+          to
           \(\mathcal{Y}\) of its restriction to \(N\). Using the pair of pants construction, we define an
-          \(\mathrm{E}_n\)-category \(\mathrm{H}_n(\mathcal{Y}, \mathcal{Z}) = \mathrm{IndCoh}_0\left(\left((\mathcal{Y},
+          \(\mathrm{E}_n\)-category \(\mathrm{H}_n(\mathcal{Y}, \mathcal{Z}) =
+          \mathrm{IndCoh}_0\left(\left((\mathcal{Y},
           \mathcal{Z})^{S^{n-1}, D^n}\right)^\wedge_{\mathcal{Y}}\right)\) and compute its factorization homology on
           any \(d\)-dimensional manifold \(M\) with \(d\leq n\), \[
           \int_M \mathrm{H}_n(\mathcal{Y}, \mathcal{Z}) \simeq \mathrm{IndCoh}_0\left(\left((\mathcal{Y},
@@ -258,24 +277,6 @@
   </div>
 
   <div class="papers"></div>
-
-  <!---Google Analytics-->
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-102623069-1', 'auto');
-    ga('send', 'pageview');
-  </script>
 
 </body>
 
