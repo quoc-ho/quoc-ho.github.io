@@ -1,11 +1,18 @@
-function toggleAbstract(el) {
+function toggleAbstracts(el) {
     let abstract = el.parentNode.getElementsByTagName("abstract")[0];
-    if (abstract.style.display == "block")
-        abstract.style.display = "none";
-    else abstract.style.display = "block";
+    toggleMe(abstract);
+    hideOther(abstract);
+}
 
+function toggleMe(me) {
+    if (me.style.display == "block")
+        me.style.display = "none";
+    else me.style.display = "block";
+}
+
+function hideOther(me) {
     for (abs of Array.from(document.getElementsByTagName("abstract"))) {
-        if (abs != abstract)
+        if (abs != me)
             abs.style.display = "none";
     }
 }
