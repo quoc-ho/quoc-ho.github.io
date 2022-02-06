@@ -102,6 +102,11 @@ ol li ol li {
   margin: 0.8em 0em;
 }
 
+.papers>content>paperHead {
+  cursor:pointer;
+  display: block;
+}
+
 .papers>content>p {
   padding: 0em;
   margin: 0em 0em;
@@ -111,6 +116,21 @@ ol li ol li {
 
 .papers>content>em {
   font-size: 95%;
+}
+
+.papers>content>paperHead>p {
+  padding: 0em;
+  margin: 0em 0em;
+  text-align: justify;
+  font-weight: bold;
+}
+
+.papers>content>paperHead>em {
+  font-size: 95%;
+}
+
+.papers>content>abstract {
+  display: none;
 }
 
 .papers abstract>p {
