@@ -20,6 +20,16 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .papers content {
+    flex-basis: 80%;
+    margin: 0.2em 0em;
+  }
+  links {
+    margin-top: 0em;
+  }  
+}
+
 @media screen and (min-width: 1000px) {
   body {
     max-width: 850px;
@@ -30,6 +40,13 @@
   body .papers {
     flex-direction: row;
   }
+  .papers content {
+    flex-basis: 80%;
+    margin: 0.8em 0em;
+  }  
+  links {
+    margin-top: 0.8em;
+  }  
 }
 
 body {
@@ -97,11 +114,6 @@ ol li ol li {
   justify-content: space-between;
 }
 
-.papers content {
-  flex-basis: 80%;
-  margin: 0.8em 0em;
-}
-
 .papers>content>paperHead {
   cursor:pointer;
   display: block;
@@ -140,13 +152,14 @@ ol li ol li {
   text-align: justify;
 }
 
+.papers abstract>p:not(:first-child) {
+  text-indent: 20px;
+  margin-block-start: 0em;
+}
+
 .papers abstract abstractTit {
   font-weight: bold;
   font-size: 90%;
-}
-
-links {
-  margin-top: 0.8em;
 }
 
 .papers links a {
