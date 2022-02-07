@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'URWClassico';
+    src: url('/assets/fonts/URWClassico-BolIta.woff2') format('woff2'),
+        url('/assets/fonts/URWClassico-BolIta.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'URWClassico';
+    src: url('/assets/fonts/URWClassico-Bol.woff2') format('woff2'),
+        url('/assets/fonts/URWClassico-Bol.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'URWClassico';
+    src: url('/assets/fonts/URWClassico-Ita.woff2') format('woff2'),
+        url('/assets/fonts/URWClassico-Ita.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'URWClassico';
+    src: url('/assets/fonts/URWClassico-Reg.woff2') format('woff2'),
+        url('/assets/fonts/URWClassico-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MathJax_Main';
+    src: url('/assets/fonts/MathJax_Main-Bold.woff2') format('woff2'),
+        url('/assets/fonts/MathJax_Main-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MathJax_Main';
+    src: url('/assets/fonts/MathJax_Main-Italic.woff2') format('woff2'),
+        url('/assets/fonts/MathJax_Main-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MathJax_Main';
+    src: url('/assets/fonts/MathJax_Main-Regular.woff2') format('woff2'),
+        url('/assets/fonts/MathJax_Main-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

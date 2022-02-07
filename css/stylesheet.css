@@ -7,14 +7,11 @@
 
 @media screen and (min-width: 480px) {
   body {
-    max-width: 80%;
+    max-width: 85%;
   }
 }
 
 @media screen and (min-width: 550px) {
-  body {
-    font-size: 110%;
-  }
   body .intro {
     flex-direction: row-reverse;
   }
@@ -32,7 +29,7 @@
 
 @media screen and (min-width: 1000px) {
   body {
-    max-width: 850px;
+    max-width: 740px;
   }
   body header {
     flex-direction: row;
@@ -41,16 +38,16 @@
     flex-direction: row;
   }
   .papers content {
-    flex-basis: 80%;
+    flex-basis: 78%;
     margin: 0.8em 0em;
   }  
   links {
-    margin-top: 0.8em;
+    margin-top: 0.55em;
   }  
 }
 
 body {
-  font-family: 'Lora', serif;
+  font-family: 'URWClassico', sans-serif;
   margin-top: 0.5em;
   margin-left: auto;
   margin-right: auto;
@@ -70,12 +67,12 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Lora', serif;
+  font-family: 'URWClassico', sans-serif;
   font-weight: lighter;
 }
 
 p {
-  font-family: 'Lora', serif;
+  font-family: 'URWClassico', sans-serif;
 }
 
 ul {
@@ -146,10 +143,11 @@ ol li ol li {
 }
 
 .papers abstract>p {
-  font-size: 90%;
+  font-size: 93%;
   margin-block-start: 0.25em;
   margin-block-end: 0em;
   text-align: justify;
+  font-family: 'MathJax_Main';
 }
 
 .papers abstract>p:not(:first-child) {
@@ -194,7 +192,7 @@ ol li ol li {
 }
 
 header {
-  font-family: 'Lora', serif;
+  font-family: 'URWClassico', serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -206,7 +204,8 @@ header {
 }
 
 header h1 {
-  font-family: 'Lora', serif;
+  font-family: 'URWClassico', sans-serif;
+  font-weight: 400;
   text-align: center;
   margin: 0em;
 }
@@ -227,9 +226,15 @@ nav li {
   display: inline;
   list-style-type: none;
   margin: 0em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
   text-align: left;
+}
+
+nav li:not(:first-child) {
+  padding-left: 0.5em;
+}
+
+nav li:not(:last-child) {
+  padding-right: 0.5em;
 }
 
 footer {
@@ -263,56 +268,56 @@ footer {
 }
 
 * {
-  color: #657b83;
+  color: #000;
 }
 
 body {
-  background-color: #fdf6e3;
+  background-color: #f0f1f4;
 }
 
 body ::-moz-selection {
-  background-color: #cb4b16;
-  color: #eee8d5;
+  background-color: #c50b0b;
+  color: #f0f1f4;
 }
 
 body ::-selection {
-  background-color: #cb4b16;
-  color: #eee8d5;
+  background-color: #c50b0b;
+  color: #f0f1f4;
 }
 
 a, a:active, a:visited {
-  color: #268bd2;
+  color: #0047a3;
 }
 
 code {
   color: #d33682;
-  font-size: 110%
+  font-size: 120%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #cb4b16;
+  color: #c50b0b;
 }
 
 h1 a, h1 a:active, h1 a:visited, h2 a, h2 a:active, h2 a:visited, h3 a, h3 a:active, h3 a:visited, h4 a, h4 a:active, h4 a:visited, h5 a, h5 a:active, h5 a:visited, h6 a, h6 a:active, h6 a:visited {
-  color: #cb4b16;
+  color: #c50b0b;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-  background-color: #eee8d5;
+  background-color: #f0f1f4;
   text-decoration: none;
 }
 
 header a, header a:active, header a:visited {
-  color: #657b83;
+  color: #000;
 }
 
 header a.active {
-  color: #cb4b16;
+  color: #c50b0b;
 }
 
 header a:hover {
-  color: #cb4b16;
-  background-color: #fdf6e3;
+  color: #c50b0b;
+  background-color: #f0f1f4;
   text-decoration: none;
 }
 
@@ -322,23 +327,19 @@ footer {
 }
 
 footer a, footer a:active, footer a:visited {
-  color: #2aa198;
+  color: #1ca99e;
 }
 
 .papers ul {
-  background: #eee8d5;
+  background: #f0f1f4;
 }
 
 .bibliography table tbody>tr:nth-child(odd), .classplan table tbody>tr:nth-child(odd) {
-  background: #eee8d5;
+  background: #f0f1f4;
 }
 
 .infotable table {
-  background: #eee8d5;
-}
-
-#mypicture {
-  border-color: #93a1a1;
+  background: #f0f1f4;
 }
 
 @media print {
@@ -364,9 +365,6 @@ footer a, footer a:active, footer a:visited {
   body ::-selection {
     background-color: #000;
     color: #fff;
-  }
-  a, a:active, a:visited {
-    color: #000;
   }
   code {
     color: #000;
