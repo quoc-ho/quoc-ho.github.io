@@ -147,7 +147,7 @@ ol li ol li {
   margin-block-start: 0.25em;
   margin-block-end: 0em;
   text-align: justify;
-  font-family: 'MathJax_Main';
+  font-family: 'MathJax_Main', serif;
 }
 
 .papers abstract>p:not(:first-child) {
@@ -305,6 +305,10 @@ h1 a, h1 a:active, h1 a:visited, h2 a, h2 a:active, h2 a:visited, h3 a, h3 a:act
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   background-color: #f0f1f4;
   text-decoration: none;
+}
+
+h3 {
+  font-size: 1.2em;
 }
 
 header a, header a:active, header a:visited {
