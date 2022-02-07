@@ -54,6 +54,11 @@ body {
   margin-bottom: 2em
 }
 
+/* Default color of mathjax text */
+mjx-container * {
+  color: #000000d0;
+}
+
 * a {
   text-decoration: none;
 }
