@@ -197,7 +197,7 @@ ol li ol li {
 }
 
 header {
-  font-family: 'URWClassico', serif;
+  font-family: 'URWClassico', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
