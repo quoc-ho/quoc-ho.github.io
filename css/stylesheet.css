@@ -146,11 +146,13 @@ ol li ol li {
   font-size: 95%;
 }
 
-.papers>content>abstract {
-  display: none;
+.papers>content>div.abstract {
+  max-height: 0px;
+  transition: max-height 0.14s ease-out;
+  overflow: hidden;
 }
 
-.papers abstract>p {
+.papers div.abstract>p {
   font-size: 93%;
   margin-block-start: 0.25em;
   margin-block-end: 0em;
@@ -158,12 +160,12 @@ ol li ol li {
   font-family: 'URWClassico', sans-serif;
 }
 
-.papers abstract>p:not(:first-child) {
+.papers div.abstract>p:not(:first-child) {
   text-indent: 20px;
   margin-block-start: 0em;
 }
 
-.papers abstract abstractTit {
+.papers div.abstract abstractTit {
   font-weight: bold;
   font-size: 90%;
 }
