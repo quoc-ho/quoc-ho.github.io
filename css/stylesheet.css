@@ -82,6 +82,7 @@ h1, h2, h3, h4 {
 
 p {
   font-family: 'URWClassico', sans-serif;
+  font-weight: lighter;
 }
 
 ul {
@@ -123,6 +124,7 @@ ol li ol li {
 .papers>content>paperHead {
   cursor:pointer;
   display: block;
+  font-weight: lighter;
 }
 
 .papers>content>p {
@@ -134,6 +136,7 @@ ol li ol li {
 
 .papers>content>em {
   font-size: 95%;
+  font-weight: lighter;
 }
 
 .papers>content>paperHead>p {
@@ -144,6 +147,7 @@ ol li ol li {
 
 .papers>content>paperHead>em {
   font-size: 95%;
+  font-weight: lighter;
 }
 
 .papers>content>div.abstract {
