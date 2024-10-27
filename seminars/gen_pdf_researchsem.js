@@ -68,7 +68,7 @@ ${info.abstract}
 \vspace{5em}
 \begin{flushright}
   {\small
-    \textsf{Room ${info.room}}
+    \textsf{${info.room}}
 
   \textsf{${date} ${time}}}
 \end{flushright}
