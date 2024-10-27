@@ -39,11 +39,11 @@ function makeDocument(info) {
 \begin{document}
 \pagenumbering{gobble}
 
-\hspace{-1.2em}
+\hspace{-1.6em}
 \begin{minipage}{0.13\textwidth}
   \scalebox{0.5}{\logo}
 \end{minipage}\hfill
-\begin{minipage}{0.87\textwidth}
+\begin{minipage}{0.89\textwidth}
   \vspace{0.9em}
   \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
