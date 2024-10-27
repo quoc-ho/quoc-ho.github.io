@@ -1,18 +1,14 @@
-// ==UserScript==
-// @name         Research Seminar Pdf Generator
-// @namespace    http://tampermonkey.net/
-// @version      2024-10-26
-// @description  try to take over the world!
-// @author       You
-// @match        https://researchseminars.org/talk/HKUST-AG/*
-// @grant        none
-// ==/UserScript==
-
 async function getInfo() {
-  const talkNo = window.location.hash.substring(1);
-  const regex = /talk\/([^\/]+)\/(\d+)/;
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
+  let talkNo = urlParams.get('talk');
+  let title = urlParams.get('title');
 
   let res = await fetch(`https://researchseminars.org/api/0/lookup/talk?series_id="HKUST-AG"&series_ctr=${talkNo}`).then(res => res.json())
+
+  if (title) {
+    res.properties.speaker = `${title} ${res.properties.speaker}`;
+  }
   return res.properties;
 }
 
@@ -31,26 +27,34 @@ function makeDocument(info) {
   let document = String.raw`
 \documentclass[12pt, a4paper]{amsart}
 
-\usepackage{amsmath,amssymb,amsthm,tikz}
+\usepackage{amsmath,amssymb,amsthm,minibox,graphicx}
 
 \setlength\parindent{0pt}
 \linespread{1.05}
 
+\newcommand{\logo}{
+  \includegraphics{HKUST_logo.pdf}
+}
+\frenchspacing
 \begin{document}
 \pagenumbering{gobble}
-% \maketitle
 
-\scalebox{1.4}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+\hspace{-1.2em}
+\begin{minipage}{0.13\textwidth}
+  \scalebox{0.5}{\logo}
+\end{minipage}\hfill
+\begin{minipage}{0.87\textwidth}
+  \vspace{0.9em}
+  \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
-\textsf{The Hong Kong University of Science and Technology}
+  \textsf{The Hong Kong University of Science and Technology}
 
-\textsf{Department of Mathematics}
+  \textsf{Department of Mathematics}
+\end{minipage}
 
-\vspace{8em}
+\vspace{10em}
 
-\vspace{2em}
-
-\textbf{\textsf{${info.title}}}
+\scalebox{1.1}{\textbf{\textsf{${info.title}}}}
 
 \vspace{0.5em}
 
@@ -68,19 +72,41 @@ ${info.abstract}
 
   \textsf{${date} ${time}}}
 \end{flushright}
+
 \end{document}
   `;
+  console.log('Source document:');
+  console.log('--------------------------------');
+  console.log(document);
+  console.log('--------------------------------');
   return document;
 }
 
-async function getPdfLink() {
-  let info = await getInfo();
-  let document = makeDocument(info);
-  let url = `https://latexonline.cc/compile?text=${document}`;
-  let encodedUrl = encodeURI(url);
-  return encodedUrl;
-}
+async function compile(document) {
+  let response = await fetch('https://latex.ytotech.com/builds/sync', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      compiler: "pdflatex",
+      resources: [
+        {
+          main: true,
+          content: document,
+        },
+        {
+          "path": "HKUST_logo.pdf",
+          "url": "https://quocho.com/seminars/HKUST_logo.pdf"
+        },
+      ],
+    })
+  });
+  let blob = await response.blob();
+  let url = URL.createObjectURL(blob);
 
+  return url;
+}
 function insertPdfLink(url) {
   let link = document.createElement('a');
   link.href = url;
@@ -95,8 +121,17 @@ function insertPdfLink(url) {
   document.body.appendChild(pdfViewer);
 }
 
+async function doIt() {
+  let info = await getInfo();
+  let document = makeDocument(info);
+  let url = await compile(document);
+  insertPdfLink(url);
+}
+
 (function () {
   'use strict';
 
-  getPdfLink().then(link => insertPdfLink(link));
+  // getPdfLink().then(link => insertPdfLink(link));
+
+  doIt();
 })();
