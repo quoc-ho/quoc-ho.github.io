@@ -25,7 +25,7 @@ function makeDocument(info) {
     minute: "2-digit"
   });
   let document = String.raw`
-\documentclass[12pt, a4paper]{amsart}
+\documentclass[14pt, a4paper]{extarticle}
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx}
 
@@ -39,38 +39,39 @@ function makeDocument(info) {
 \begin{document}
 \pagenumbering{gobble}
 
-\hspace{-1.6em}
-\begin{minipage}{0.13\textwidth}
+\begin{minipage}{0.1\textwidth}
+  \vspace{-3.5em}\hspace{-1em}
   \scalebox{0.5}{\logo}
 \end{minipage}\hfill
-\begin{minipage}{0.89\textwidth}
-  \vspace{0.9em}
-  \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+\begin{minipage}{0.95\textwidth}
+  \vspace{-3.5em}
+  \vspace{0.55em}
+  \scalebox{1.2}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
 
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{10em}
+\vspace{11.5em}
 
 \scalebox{1.1}{\textbf{\textsf{${info.title}}}}
 
-\vspace{0.5em}
+\vspace{0.2em}
 
 \textit{by }\textsf{${info.speaker}}
 
 \textit{from }\textsf{${info.speaker_affiliation}}
-\vspace{2em}
+\vspace{1em}
 
 ${info.abstract}
 
-\vspace{5em}
+\vspace{3.5em}
 \begin{flushright}
   {\small
-    \textsf{${info.room}}
+    \textsf{\textbf{${info.room}}}
 
-  \textsf{${date} ${time}}}
+  \textsf{\textbf{${date} ${time}}}}
 \end{flushright}
 
 \end{document}
