@@ -40,20 +40,20 @@ function makeDocument(info) {
 \pagenumbering{gobble}
 
 \begin{minipage}{0.1\textwidth}
-  \vspace{-3.5em}\hspace{-1em}
+  \vspace{-4em}\hspace{-1.2em}
   \scalebox{0.5}{\logo}
 \end{minipage}\hfill
-\begin{minipage}{0.95\textwidth}
-  \vspace{-3.5em}
+\begin{minipage}{0.9\textwidth}
+  \vspace{-4em}
   \vspace{0.55em}
-  \scalebox{1.2}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+  \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
 
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{9.5em}
+\vspace{10em}
 
 \textbf{\textsf{${info.title}}}
 
