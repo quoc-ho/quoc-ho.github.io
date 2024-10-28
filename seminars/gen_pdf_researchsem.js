@@ -41,15 +41,15 @@ function makeDocument(info) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.7]current page.north east);
+  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/6.2]current page.north east);
 \end{tikzpicture}
 
-\begin{minipage}{0.08\textwidth}
-  \vspace{-12em}\hspace{-2em}
-  \scalebox{0.6}{\logo}
+\begin{minipage}{0.07\textwidth}
+  \vspace{-13em}\hspace{-3.5em}
+  \scalebox{0.63}{\logo}
 \end{minipage}\hfill
-\begin{minipage}{0.92\textwidth}
-  \vspace{-12em}
+\begin{minipage}{0.93\textwidth}
+  \vspace{-13em}
   \vspace{0.55em}
   \scalebox{1.4}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
