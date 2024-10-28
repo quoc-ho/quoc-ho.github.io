@@ -29,6 +29,7 @@ function makeDocument(info) {
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,xcolor,tikz}
 
+\definecolor{hkustblue}{HTML}{153870}
 
 \setlength\parindent{0pt}
 \linespread{1.05}
@@ -41,7 +42,7 @@ function makeDocument(info) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
+  \fill[hkustblue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
