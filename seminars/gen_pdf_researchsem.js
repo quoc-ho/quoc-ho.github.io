@@ -42,7 +42,7 @@ function makeDocument(info) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[hkustblue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
+  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
