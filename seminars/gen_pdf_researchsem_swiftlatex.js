@@ -30,7 +30,7 @@ function makeDocument(info) {
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx}
 
 \setlength\parindent{0pt}
-\linespread{1.05}
+\linespread{1.15}
 
 \newcommand{\logo}{
   \includegraphics{HKUST_logo.pdf}
@@ -53,9 +53,9 @@ function makeDocument(info) {
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{11.5em}
+\vspace{9.5em}
 
-\scalebox{1.1}{\textbf{\textsf{${info.title}}}}
+\textbf{\textsf{${info.title}}}
 
 \vspace{0.2em}
 
