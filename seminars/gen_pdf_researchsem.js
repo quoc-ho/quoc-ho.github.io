@@ -46,11 +46,11 @@ function makeDocument(info) {
 
 \begin{minipage}{0.07\textwidth}
   \vspace{-12.5em}\hspace{-3.5em}
-  \scalebox{0.63}{\logo}
+  \scalebox{0.11}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
   \vspace{-12.5em}
-  \vspace{0.55em}
+  \vspace{1.5em}
   \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
