@@ -27,10 +27,11 @@ function makeDocument(info) {
   let document = String.raw`
 \documentclass[14pt, a4paper]{extarticle}
 
-\usepackage{amsmath,amssymb,amsthm,minibox,graphicx}
+\usepackage{amsmath,amssymb,amsthm,minibox,graphicx,xcolor,tikz}
+
 
 \setlength\parindent{0pt}
-\linespread{1.15}
+\linespread{1.05}
 
 \newcommand{\logo}{
   \includegraphics{HKUST_logo.pdf}
@@ -39,21 +40,25 @@ function makeDocument(info) {
 \begin{document}
 \pagenumbering{gobble}
 
-\begin{minipage}{0.1\textwidth}
-  \vspace{-4em}\hspace{-1.2em}
-  \scalebox{0.5}{\logo}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.7]current page.north east);
+\end{tikzpicture}
+
+\begin{minipage}{0.08\textwidth}
+  \vspace{-12em}\hspace{-2em}
+  \scalebox{0.6}{\logo}
 \end{minipage}\hfill
-\begin{minipage}{0.9\textwidth}
-  \vspace{-4em}
+\begin{minipage}{0.92\textwidth}
+  \vspace{-12em}
   \vspace{0.55em}
-  \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+  \scalebox{1.4}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
 
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{10em}
+\vspace{5em}
 
 \textbf{\textsf{${info.title}}}
 
