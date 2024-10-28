@@ -41,17 +41,17 @@ function makeDocument(info) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/6.2]current page.north east);
+  \fill[blue!4] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
-  \vspace{-13em}\hspace{-3.5em}
+  \vspace{-12.5em}\hspace{-3.5em}
   \scalebox{0.63}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
-  \vspace{-13em}
+  \vspace{-12.5em}
   \vspace{0.55em}
-  \scalebox{1.4}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+  \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
 
