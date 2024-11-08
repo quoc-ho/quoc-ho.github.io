@@ -11,7 +11,7 @@ async function getInfo() {
   console.log(infos);
 
   if (title) {
-    infos.forEach(info => info.title = `${title} ${res.properties.speaker}`);
+    infos.forEach(info => info.speaker = `${title} ${info.speaker}`);
   }
 
   return infos;
