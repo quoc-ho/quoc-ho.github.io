@@ -1,29 +1,60 @@
 async function getInfo() {
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
-  let talkNo = urlParams.get('talk');
+  let talkNos = urlParams.get('talk');
   let title = urlParams.get('title');
 
-  let res = await fetch(`https://researchseminars.org/api/0/lookup/talk?series_id="HKUST-AG"&series_ctr=${talkNo}`).then(res => res.json())
+  let infosPromise = talkNos.split(',')
+    .map(async talkNo => await fetch(`https://researchseminars.org/api/0/lookup/talk?series_id="HKUST-AG"&series_ctr=${talkNo}`).then(res => res.json()));
+
+  let infos = (await Promise.all(infosPromise)).map(res => res.properties);
+  console.log(infos);
 
   if (title) {
-    res.properties.speaker = `${title} ${res.properties.speaker}`;
+    infos.forEach(info => info.title = `${title} ${res.properties.speaker}`);
   }
-  return res.properties;
+
+  return infos;
 }
 
-function makeDocument(info) {
-  let dateTime = new Date(info.start_time);
-  let date = dateTime.toLocaleDateString('en-US', {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+function makeDocument(infos) {
+  let isSeries = infos.length > 1;
+  let coords = infos.map(info => {
+    let dateTime = new Date(info.start_time);
+    let date = dateTime.toLocaleDateString('en-US', {
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+    let time = dateTime.toLocaleTimeString('en-US', {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    return { room: info.room, date: date, time: time };
   });
-  let time = dateTime.toLocaleTimeString('en-US', {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+
+  let coordsString =
+    coords
+      .map(coord =>
+        String.raw`${isSeries ? String.raw`\rownumber &` : ''} ${coord.room} & ${coord.date} & ${coord.time}`
+      )
+      .join(String.raw`\\`);
+
+  let coordsTable = String.raw`
+\begin{table}[h]
+  \begin{flushright}
+    {\small\ttfamily
+      \begin{tabular}{${isSeries ? 'r|lrr' : 'lrr'}}
+        ${coordsString}
+      \end{tabular}
+    }
+  \end{flushright}
+\end{table}
+  `;
+
+  let info = infos[0];
   let document = String.raw`
 \documentclass[14pt, a4paper]{extarticle}
 
@@ -32,7 +63,9 @@ function makeDocument(info) {
 \definecolor{hkustblue}{HTML}{153870}
 
 \setlength\parindent{0pt}
-\linespread{1.05}
+
+\newcounter{magicrownumbers}
+\newcommand\rownumber{\stepcounter{magicrownumbers}\Roman{magicrownumbers}}
 
 \newcommand{\logo}{
   \includegraphics{HKUST_logo.pdf}
@@ -46,8 +79,8 @@ function makeDocument(info) {
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
-  \vspace{-12.5em}\hspace{-3.8em}
-  \scalebox{0.11}{\logo}
+  \vspace{-12.5em}\hspace{-3.5em}
+  \scalebox{0.105}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
   \vspace{-12.5em}
@@ -59,7 +92,7 @@ function makeDocument(info) {
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{5em}
+\vspace{1.5em}
 
 \textbf{\textsf{${info.title}}}
 
@@ -70,15 +103,14 @@ function makeDocument(info) {
 \textit{from }\textsf{${info.speaker_affiliation}}
 \vspace{1em}
 
-${info.abstract}
+{
+\setlength\parskip{3.5pt}
+{${info.abstract}}
+\setlength\parskip{0pt}
+}
 
-\vspace{3.5em}
-\begin{flushright}
-  {\small
-    \textsf{\textbf{${info.room}}}
-
-  \textsf{\textbf{${date} ${time}}}}
-\end{flushright}
+\vspace{1.5em}
+${coordsTable}
 
 \end{document}
   `;
