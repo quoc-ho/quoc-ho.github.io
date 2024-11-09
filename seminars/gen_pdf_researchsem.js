@@ -14,6 +14,10 @@ async function getInfo() {
     infos.forEach(info => info.speaker = `${title} ${info.speaker}`);
   }
 
+  if (infos.length > 1 && infos[0].comments != '') {
+    infos[0].title = infos[0].comments;
+  }
+
   return infos;
 }
 
