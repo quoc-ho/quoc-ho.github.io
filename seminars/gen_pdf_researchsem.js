@@ -42,15 +42,16 @@ function makeDocument(infos) {
   let coordsString =
     coords
       .map(coord =>
-        String.raw`${isSeries ? String.raw`\rownumber &` : ''} ${coord.room} & ${coord.date} & ${coord.time}`
+        String.raw`${isSeries ? String.raw`\rownumber &` : ''} ${coord.room} & ${coord.date} ${coord.time}`
       )
-      .join(String.raw`\\`);
+      .join(String.raw`\\ \hline`);
 
   let coordsTable = String.raw`
 \begin{table}[h]
   \begin{flushright}
     {\small\ttfamily
-      \begin{tabular}{${isSeries ? 'r|lrr' : 'lrr'}}
+      \begin{tabular}{${isSeries ? 'r|lr' : 'lr'}}
+        \arrayrulecolor{hkustblue!25}
         ${coordsString}
       \end{tabular}
     }
@@ -58,11 +59,14 @@ function makeDocument(infos) {
 \end{table}
   `;
 
+  let qrCodes = infos.map(info => info.seminar_ctr).map(seminarCtr => String.raw`\qrcode{researchseminars.org/talk/HKUST-AG/${seminarCtr}}`).join(String.raw`\hspace{1.5em}`);
+
   let info = infos[0];
   let document = String.raw`
 \documentclass[14pt, a4paper]{extarticle}
 
-\usepackage{amsmath,amssymb,amsthm,minibox,graphicx,xcolor,tikz}
+\usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
+\usepackage[table]{xcolor}
 
 \definecolor{hkustblue}{HTML}{153870}
 
@@ -74,12 +78,21 @@ function makeDocument(infos) {
 \newcommand{\logo}{
   \includegraphics{HKUST_logo.pdf}
 }
+
+\usepackage[
+  a4paper,
+  textheight=23.7cm,
+  textwidth=15cm,
+	bottom=1.5cm
+]{geometry}
+
+
 \frenchspacing
 \begin{document}
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/5.8]current page.north east);
+  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/5.9]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
@@ -109,12 +122,16 @@ function makeDocument(infos) {
 
 {
 \setlength\parskip{3.5pt}
-{${info.abstract}}
+${info.abstract}
 \setlength\parskip{0pt}
 }
 
-\vspace{1.5em}
+\vspace{1em}
 ${coordsTable}
+
+\begin{flushright}
+  ${qrCodes}
+\end{flushright}
 
 \end{document}
   `;
