@@ -57,7 +57,7 @@ function makeDocument(infos) {
   \begin{flushright}
     {\small\ttfamily
       \begin{tabular}{${isSeries ? 'r|lr' : 'lr'}}
-        \arrayrulecolor{hkustblue!25}
+        \arrayrulecolor{black!18}
         ${coordsString}
       \end{tabular}
     }
