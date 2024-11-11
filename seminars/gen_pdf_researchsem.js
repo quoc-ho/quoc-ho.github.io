@@ -72,6 +72,10 @@ function makeDocument(infos) {
   let document = String.raw`
 \documentclass[14pt, a4paper]{extarticle}
 
+\usepackage{sansmathfonts}
+%\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
 \usepackage[table]{xcolor}
 
@@ -122,9 +126,9 @@ function makeDocument(infos) {
 
 \vspace{0.2em}
 
-\textit{by }\textsf{${info.speaker}}
+{\itshape\rmfamily by }\textsf{${info.speaker}}
 
-\textit{from }\textsf{${info.speaker_affiliation}}
+{\itshape\rmfamily from }\textsf{${info.speaker_affiliation}}
 \vspace{1em}
 
 {
