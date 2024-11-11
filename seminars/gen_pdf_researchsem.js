@@ -140,7 +140,7 @@ ${coordsTable}
   ${qrCodes}
 \end{flushright}
 \vfill
-{\tiny\ttfamily\color{black!12} Generated on ${genDateTime.date} at ${genDateTime.time}}
+{\tiny\ttfamily\color{black!9} Generated on ${new Date().toString()}}
 \end{document}
   `;
   console.log('Source document:');
