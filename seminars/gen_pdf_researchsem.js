@@ -21,22 +21,28 @@ async function getInfo() {
   return infos;
 }
 
+function formatDateTime(dateTime) {
+  let date = dateTime.toLocaleDateString('en-US', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+  let time = dateTime.toLocaleTimeString('en-US', {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+  return { date: date, time: time };
+}
+
 function makeDocument(infos) {
   let isSeries = infos.length > 1;
   let coords = infos.map(info => {
     let dateTime = new Date(info.start_time);
-    let date = dateTime.toLocaleDateString('en-US', {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
-    let time = dateTime.toLocaleTimeString('en-US', {
-      hour: "2-digit",
-      minute: "2-digit"
-    });
+    let formattedDateTime = formatDateTime(dateTime);
 
-    return { room: info.room, date: date, time: time };
+    return { room: info.room, date: formattedDateTime.date, time: formattedDateTime.time };
   });
 
   let coordsString =
@@ -60,6 +66,7 @@ function makeDocument(infos) {
   `;
 
   let qrCodes = infos.map(info => info.seminar_ctr).map(seminarCtr => String.raw`\qrcode{researchseminars.org/talk/HKUST-AG/${seminarCtr}}`).join(String.raw`\hspace{1.5em}`);
+  let genDateTime = formatDateTime(new Date());
 
   let info = infos[0];
   let document = String.raw`
@@ -92,15 +99,15 @@ function makeDocument(infos) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/5.9]current page.north east);
+  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/6.5]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
-  \vspace{-12.5em}\hspace{-3.5em}
+  \vspace{-13.3em}\hspace{-3.5em}
   \scalebox{0.105}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
-  \vspace{-12.5em}
+  \vspace{-13.3em}
   \vspace{1.2em}
   \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
@@ -109,7 +116,7 @@ function makeDocument(infos) {
   \textsf{Department of Mathematics}
 \end{minipage}
 
-\vspace{1.5em}
+\vspace{0.5em}
 
 \textbf{\textsf{${info.title}}}
 
@@ -126,13 +133,14 @@ ${info.abstract}
 \setlength\parskip{0pt}
 }
 
-\vspace{1em}
+\vspace{0.5em}
 ${coordsTable}
-
 \begin{flushright}
+  \vspace{-2em}
   ${qrCodes}
 \end{flushright}
-
+\vfill
+{\tiny\ttfamily\color{black!12} Generated on ${genDateTime.date} at ${genDateTime.time}}
 \end{document}
   `;
   console.log('Source document:');
@@ -190,8 +198,6 @@ async function doIt() {
 
 (function () {
   'use strict';
-
-  // getPdfLink().then(link => insertPdfLink(link));
 
   doIt();
 })();
