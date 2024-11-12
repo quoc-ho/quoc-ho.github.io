@@ -112,15 +112,13 @@ function makeDocument(infos) {
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
   \vspace{-13.3em}
-  \vspace{1.2em}
+  \vspace{1.1em}
   \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
   \textsf{The Hong Kong University of Science and Technology}
 
   \textsf{Department of Mathematics}
 \end{minipage}
-
-\vspace{0.5em}
 
 \textbf{\textsf{${info.title}}}
 
