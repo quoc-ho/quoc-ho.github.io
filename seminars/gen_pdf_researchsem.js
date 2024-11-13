@@ -78,6 +78,7 @@ function makeDocument(infos) {
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
 \usepackage[table]{xcolor}
+\usepackage[protrusion=true]{microtype}
 
 \definecolor{hkustblue}{HTML}{153870}
 
