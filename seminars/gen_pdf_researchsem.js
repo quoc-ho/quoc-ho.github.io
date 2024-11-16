@@ -38,6 +38,9 @@ function formatDateTime(dateTime) {
 
 function makeDocument(infos) {
   let isSeries = infos.length > 1;
+  let lastUpdate = formatDateTime(infos.map(info => new Date(info.edited_at)).sort((a, b) => b - a)[0]);
+  let now = formatDateTime(new Date());
+
   let coords = infos.map(info => {
     let dateTime = new Date(info.start_time);
     let formattedDateTime = formatDateTime(dateTime);
@@ -143,7 +146,7 @@ ${coordsTable}
   ${qrCodes}
 \end{flushright}
 \vfill
-{\tiny\ttfamily\color{black!9} Generated on ${new Date().toString()}}
+{\tiny\ttfamily\color{black!9}  Last updated at ${lastUpdate.time} on ${lastUpdate.date}. Generated at ${now.time} at ${now.date}.}
 \end{document}
   `;
   console.log('Source document:');
