@@ -146,7 +146,7 @@ ${coordsTable}
   ${qrCodes}
 \end{flushright}
 \vfill
-{\tiny\ttfamily\color{black!9}  Last updated at ${lastUpdate.time} on ${lastUpdate.date}. Generated at ${now.time} at ${now.date}.}
+{\tiny\ttfamily\color{black!9}  Last updated at ${lastUpdate.time} on ${lastUpdate.date}. Generated at ${now.time} on ${now.date}.}
 \end{document}
   `;
   console.log('Source document:');
