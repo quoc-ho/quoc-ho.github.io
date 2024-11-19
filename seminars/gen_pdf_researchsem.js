@@ -208,7 +208,7 @@ async function zipContent(source) {
 
 function toOverleaf(base64Content) {
   document.getElementById("overleaf_data").value = base64Content;
-  document.getElementById("overleaf_button").hidden = false;
+  document.getElementById("overleaf_form").hidden = false;
 }
 
 function blobToBase64(blob) {
