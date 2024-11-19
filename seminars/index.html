@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="jszip.js"></script>
   <script src="gen_pdf_researchsem.js" defer></script>
   <title>Research seminars PDF generator</title>
 
@@ -16,11 +17,40 @@
     body {
       height: 100vh;
     }
+
+    #overleaf_button{
+      background: none !important;
+      border: none;
+      padding: 0 !important;
+      /*optional*/
+      font-family: arial, sans-serif;
+      /*input has OS specific font-family*/
+      color: #069;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: medium;
+    }
+
+    a {
+      background: none !important;
+      border: none;
+      padding: 0 !important;
+      /*optional*/
+      font-family: arial, sans-serif;
+      /*input has OS specific font-family*/
+      color: #069;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
-
+  <form action="https://www.overleaf.com/docs" method="post" target="_blank">
+    <input type="text" name="snip_uri" id="overleaf_data" hidden="true" value="">
+    <input type="submit" id="overleaf_button" hidden="true" value="Open in Overleaf">
+    or wait for the PDF to be generated...
+  </form>
 </body>
 
 </html>
