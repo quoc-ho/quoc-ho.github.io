@@ -59,7 +59,7 @@ function makeDocument(infos) {
 \begin{table}[h]
   \begin{flushright}
     {\small\ttfamily
-      \begin{tabular}{${isSeries ? 'r|lr' : 'lr'}}
+      \begin{tabular}{${isSeries ? '@{}r|lr@{}' : '@{}lr@{}'}}
         \arrayrulecolor{black!18}
         ${coordsString}
       \end{tabular}
@@ -68,7 +68,7 @@ function makeDocument(infos) {
 \end{table}
   `;
 
-  let qrCodes = infos.map(info => info.seminar_ctr).map(seminarCtr => String.raw`\qrcode{researchseminars.org/talk/HKUST-AG/${seminarCtr}}`).join(String.raw`\hspace{1.5em}`);
+  let qrCodes = infos.map(info => info.seminar_ctr).map(seminarCtr => String.raw`\qrcode{researchseminars.org/talk/HKUST-AG/${seminarCtr}}`).join(String.raw`\hspace{1.7em}`);
   let genDateTime = formatDateTime(new Date());
 
   let info = infos[0];
@@ -139,10 +139,10 @@ ${info.abstract}
 \setlength\parskip{0pt}
 }
 
-\vspace{0.5em}
+\vspace{0.4em}
 ${coordsTable}
 \begin{flushright}
-  \vspace{-2em}
+  \vspace{-1.5em}
   ${qrCodes}
 \end{flushright}
 \vfill
