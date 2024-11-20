@@ -111,7 +111,7 @@ function makeDocument(infos) {
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
-  \vspace{-12.5em}\hspace{-3.3em}
+  \vspace{-12.5em}\hspace{-3.5em}
   \scalebox{0.11}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
