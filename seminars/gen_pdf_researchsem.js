@@ -97,7 +97,7 @@ function makeDocument(infos) {
 \usepackage[
   a4paper,
   textheight=23.7cm,
-  textwidth=15cm,
+  textwidth=14.15cm,
 	bottom=1.5cm
 ]{geometry}
 
