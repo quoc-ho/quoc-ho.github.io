@@ -107,21 +107,21 @@ function makeDocument(infos) {
 \pagenumbering{gobble}
 
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[hkustblue!10] (current page.north west) rectangle ([yshift=-\paperheight/6.5]current page.north east);
+  \fill[hkustblue!25] (current page.north west) rectangle ([yshift=-\paperheight/6.1]current page.north east);
 \end{tikzpicture}
 
 \begin{minipage}{0.07\textwidth}
-  \vspace{-13.3em}\hspace{-3.5em}
-  \scalebox{0.105}{\logo}
+  \vspace{-12.5em}\hspace{-3.3em}
+  \scalebox{0.11}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
-  \vspace{-13.3em}
-  \vspace{1.1em}
-  \scalebox{1.35}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
+  \vspace{-12.5em}
+  \vspace{1.2em}
+  \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
-  \textsf{The Hong Kong University of Science and Technology}
+  \scalebox{1.05}{\textsf{The Hong Kong University of Science and Technology}}
 
-  \textsf{Department of Mathematics}
+  \scalebox{1.105}{\textsf{Department of Mathematics}}
 \end{minipage}
 
 \textbf{\textsf{${info.title}}}
