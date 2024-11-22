@@ -108,7 +108,7 @@ function makeDocument(infos) {
 \begin{tikzpicture}[remember picture, overlay]
   \fill[hkustblue!25] (current page.north west) rectangle ([yshift=-\paperheight/6.1]current page.north east);
 \end{tikzpicture}%
-\begin{tikzpicture}[remember picture, overlay, scale=0.27]
+\begin{tikzpicture}[remember picture, overlay, scale=0.45]
   \newcounter{direction}
 
   % Initial starting point, direction, and length
@@ -137,10 +137,12 @@ function makeDocument(infos) {
     \definecolor{currentColor}{rgb}{\colorFactorA, \colorFactorB, \colorFactorC}
 
     % Draw a line
-    \draw[color=currentColor, line width=0.5mm, draw opacity=(1-\colorFactor)/10] (start) -- ++(\thedirection:\currentLength) coordinate (start);
-    % \draw[color=currentColor, line width=0.5mm, draw opacity=1] (start) -- ++(\thedirection:\currentLength) coordinate (start);
+    \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/10] (start) -- ++(\thedirection:\currentLength) coordinate (start);
   }
 \end{tikzpicture}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[white] ([yshift=-\paperheight/6.1]current page.north west) rectangle (current page.south east);
+\end{tikzpicture}%
 %
 \begin{minipage}{0.07\textwidth}
   \vspace{-10.2em}\hspace{-3.8em}
