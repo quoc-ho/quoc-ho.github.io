@@ -143,11 +143,11 @@ function makeDocument(infos) {
 \end{tikzpicture}
 %
 \begin{minipage}{0.07\textwidth}
-  \vspace{-10.5em}\hspace{-3.8em}
+  \vspace{-10.2em}\hspace{-3.8em}
   \scalebox{0.11}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
-  \vspace{-10.5em}
+  \vspace{-10.2em}
   \vspace{1.2em}
   \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
