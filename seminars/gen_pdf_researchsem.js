@@ -105,17 +105,49 @@ function makeDocument(infos) {
 \frenchspacing
 \begin{document}
 \pagenumbering{gobble}
-
 \begin{tikzpicture}[remember picture, overlay]
   \fill[hkustblue!25] (current page.north west) rectangle ([yshift=-\paperheight/6.1]current page.north east);
-\end{tikzpicture}
+\end{tikzpicture}%
+\begin{tikzpicture}[remember picture, overlay, scale=0.27]
+  \newcounter{direction}
 
+  % Initial starting point, direction, and length
+  \coordinate (start) at ([xshift=4cm,yshift=-0.5cm]current page.north east);
+  \def\initLength{5.}
+  \def\increaseAngle{92.}
+  \def\increaseLength{0.1}
+
+  % Initialize the direction counter to zero
+  \setcounter{direction}{0}
+
+  % Loop through and draw lines with varying angles and lengths
+  \foreach \i in {1,2,...,450} {
+    % Calculate current direction
+    \pgfmathtruncatemacro{\tempDirection}{mod(\thedirection+\increaseAngle,360)}
+    \setcounter{direction}{\tempDirection}
+
+    % Calculate the current length for the line segment
+    \pgfmathsetmacro{\currentLength}{\initLength + \increaseLength*\i}
+
+    % Compute color variation based on loop iteration
+    \pgfmathsetmacro{\colorFactor}{mod(\i,451)/450}
+    \pgfmathsetmacro{\colorFactorA}{1-\colorFactor/2}
+    \pgfmathsetmacro{\colorFactorB}{\colorFactor/2}
+    \pgfmathsetmacro{\colorFactorC}{\colorFactor*1.2}
+    \definecolor{currentColor}{rgb}{\colorFactorA, \colorFactorB, \colorFactorC}
+
+    % Draw a line
+    \draw[color=currentColor, line width=0.5mm, draw opacity=(1-\colorFactor)/10] (start) -- ++(\thedirection:\currentLength) coordinate (start);
+    % \draw[color=currentColor, line width=0.5mm, draw opacity=1] (start) -- ++(\thedirection:\currentLength) coordinate (start);
+  }
+\end{tikzpicture}
+%
 \begin{minipage}{0.07\textwidth}
-  \vspace{-12.5em}\hspace{-3.5em}
+  \vspace{-10.5em}\hspace{-3.8em}
   \scalebox{0.11}{\logo}
 \end{minipage}\hfill
 \begin{minipage}{0.93\textwidth}
-  \vspace{-12.5em}
+  \vspace{-10.5em}
   \vspace{1.2em}
   \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
@@ -124,6 +156,7 @@ function makeDocument(infos) {
   \scalebox{1.105}{\textsf{Department of Mathematics}}
 \end{minipage}
 
+\vspace{1em}
 \textbf{\textsf{${info.title}}}
 
 \vspace{0.2em}
