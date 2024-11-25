@@ -80,7 +80,8 @@ function makeDocument(infos) {
 \renewcommand*\familydefault{\sfdefault}
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
-\usepackage[table]{xcolor}
+\usetikzlibrary{fit,shadings}
+\usepackage[table,dvipsnames]{xcolor}
 \usepackage[protrusion=true]{microtype}
 
 \definecolor{hkustblue}{HTML}{153870}
@@ -106,7 +107,42 @@ function makeDocument(infos) {
 \begin{document}
 \pagenumbering{gobble}
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[hkustblue!25] (current page.north west) rectangle ([yshift=-\paperheight/6.1]current page.north east);
+  % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
+  \node[inner sep=0,fit=(current page)] (cp){};
+  \shade[
+    upper left=hkustblue!41,
+    lower left=hkustblue!25,
+    upper right=hkustblue!22,
+    lower right=hkustblue!27
+  ](cp.north west) rectangle +(4.01cm,-5cm);
+
+  \shade[
+    upper left=hkustblue!22,
+    lower left=hkustblue!27,
+    upper right=hkustblue!25,
+    lower right=hkustblue!27
+  ]([xshift=4cm]cp.north west) rectangle +(4.01cm,-5cm);
+
+  \shade[
+    upper left=hkustblue!25,
+    lower left=hkustblue!27,
+    upper right=hkustblue!23,
+    lower right=hkustblue!30
+  ]([xshift=2*4cm]cp.north west) rectangle +(4.01cm,-5cm);
+
+  \shade[
+    upper left=hkustblue!23,
+    lower left=hkustblue!30,
+    upper right=hkustblue!21,
+    lower right=hkustblue!32
+  ]([xshift=3*4cm]cp.north west) rectangle +(4.01cm,-5cm);
+
+  \shade[
+    upper left=hkustblue!21,
+    lower left=hkustblue!32,
+    upper right=hkustblue!85!Maroon!22,
+    lower right=hkustblue!33
+  ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
 \end{tikzpicture}%
 \begin{tikzpicture}[remember picture, overlay, scale=0.45]
   \newcounter{direction}
@@ -139,7 +175,7 @@ function makeDocument(infos) {
     % Draw a line
     \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/10] (start) -- ++(\thedirection:\currentLength) coordinate (start);
   }
-\end{tikzpicture}
+\end{tikzpicture}%
 \begin{tikzpicture}[remember picture, overlay]
   \fill[white] ([yshift=-\paperheight/6.1]current page.north west) rectangle (current page.south east);
 \end{tikzpicture}%
