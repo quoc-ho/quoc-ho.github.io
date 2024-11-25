@@ -189,9 +189,9 @@ function makeDocument(infos) {
   \vspace{1.2em}
   \scalebox{1.3}{\uppercase{\textbf{\textsf{Algebra and Geometry Seminar}}}}
 
-  \scalebox{1.05}{\textsf{The Hong Kong University of Science and Technology}}
+  \scalebox{1.02}{\textsf{The Hong Kong University of Science and Technology}}
 
-  \scalebox{1.105}{\textsf{Department of Mathematics}}
+  \scalebox{1.02}{\textsf{Department of Mathematics}}
 \end{minipage}
 
 \vspace{1em}
