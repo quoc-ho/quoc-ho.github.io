@@ -110,7 +110,7 @@ function makeDocument(infos) {
   % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
   \node[inner sep=0,fit=(current page)] (cp){};
   \shade[
-    upper left=hkustblue!39,
+    upper left=hkustblue!41,
     lower left=hkustblue!85!hkustyellow!25,
     upper right=hkustblue!22,
     lower right=hkustblue!27
@@ -141,7 +141,7 @@ function makeDocument(infos) {
     upper left=hkustblue!21,
     lower left=hkustblue!32,
     upper right=hkustblue!85!Maroon!22,
-    lower right=hkustblue!29
+    lower right=hkustblue!31
   ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
 \end{tikzpicture}%
 \begin{tikzpicture}[remember picture, overlay, scale=0.45]
