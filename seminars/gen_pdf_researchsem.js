@@ -84,6 +84,7 @@ function makeDocument(infos) {
 \usepackage[protrusion=true]{microtype}
 
 \definecolor{hkustblue}{HTML}{153870}
+\definecolor{hkustyellow}{HTML}{916821}
 
 \setlength\parindent{0pt}
 
@@ -109,8 +110,8 @@ function makeDocument(infos) {
   % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
   \node[inner sep=0,fit=(current page)] (cp){};
   \shade[
-    upper left=hkustblue!41,
-    lower left=hkustblue!25,
+    upper left=hkustblue!39,
+    lower left=hkustblue!85!hkustyellow!25,
     upper right=hkustblue!22,
     lower right=hkustblue!27
   ](cp.north west) rectangle +(4.01cm,-5cm);
@@ -125,12 +126,12 @@ function makeDocument(infos) {
   \shade[
     upper left=hkustblue!25,
     lower left=hkustblue!27,
-    upper right=hkustblue!23,
+    upper right=hkustblue!82!hkustyellow!24,
     lower right=hkustblue!30
   ]([xshift=2*4cm]cp.north west) rectangle +(4.01cm,-5cm);
 
   \shade[
-    upper left=hkustblue!23,
+    upper left=hkustblue!82!hkustyellow!24,
     lower left=hkustblue!30,
     upper right=hkustblue!21,
     lower right=hkustblue!32
