@@ -140,7 +140,7 @@ function makeDocument(infos) {
     upper left=hkustblue!21,
     lower left=hkustblue!32,
     upper right=hkustblue!85!Maroon!22,
-    lower right=hkustblue!33
+    lower right=hkustblue!29
   ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
 \end{tikzpicture}%
 \begin{tikzpicture}[remember picture, overlay, scale=0.45]
