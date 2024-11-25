@@ -69,7 +69,6 @@ function makeDocument(infos) {
   `;
 
   let qrCodes = infos.map(info => info.seminar_ctr).map(seminarCtr => String.raw`\qrcode{researchseminars.org/talk/HKUST-AG/${seminarCtr}}`).join(String.raw`\hspace{1.7em}`);
-  let genDateTime = formatDateTime(new Date());
 
   let info = infos[0];
   let document = String.raw`
