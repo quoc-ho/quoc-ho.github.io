@@ -110,28 +110,28 @@ function makeDocument(infos) {
   % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
   \node[inner sep=0,fit=(current page)] (cp){};
   \shade[
-    upper left=hkustblue!41,
+    upper left=hkustblue!40,
     lower left=hkustblue!85!hkustyellow!25,
-    upper right=hkustblue!22,
+    upper right=hkustblue!93!hkustyellow!23,
     lower right=hkustblue!27
   ](cp.north west) rectangle +(4.01cm,-5cm);
 
   \shade[
-    upper left=hkustblue!22,
+    upper left=hkustblue!93!hkustyellow!23,
     lower left=hkustblue!27,
-    upper right=hkustblue!25,
+    upper right=hkustblue!99!hkustyellow!26,
     lower right=hkustblue!27
   ]([xshift=4cm]cp.north west) rectangle +(4.01cm,-5cm);
 
   \shade[
-    upper left=hkustblue!25,
+    upper left=hkustblue!99!hkustyellow!26,
     lower left=hkustblue!27,
-    upper right=hkustblue!82!hkustyellow!24,
+    upper right=hkustblue!87!hkustyellow!24,
     lower right=hkustblue!30
   ]([xshift=2*4cm]cp.north west) rectangle +(4.01cm,-5cm);
 
   \shade[
-    upper left=hkustblue!82!hkustyellow!24,
+    upper left=hkustblue!87!hkustyellow!24,
     lower left=hkustblue!30,
     upper right=hkustblue!21,
     lower right=hkustblue!32
@@ -140,7 +140,7 @@ function makeDocument(infos) {
   \shade[
     upper left=hkustblue!21,
     lower left=hkustblue!32,
-    upper right=hkustblue!85!Maroon!22,
+    upper right=hkustblue!84!Maroon!22,
     lower right=hkustblue!31
   ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
 \end{tikzpicture}%
@@ -173,7 +173,7 @@ function makeDocument(infos) {
     \definecolor{currentColor}{rgb}{\colorFactorA, \colorFactorB, \colorFactorC}
 
     % Draw a line
-    \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/10] (start) -- ++(\thedirection:\currentLength) coordinate (start);
+    \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/9.5] (start) -- ++(\thedirection:\currentLength) coordinate (start);
   }
 \end{tikzpicture}%
 \begin{tikzpicture}[remember picture, overlay]
