@@ -79,7 +79,7 @@ function makeDocument(infos) {
 \renewcommand*\familydefault{\sfdefault}
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
-\usetikzlibrary{fit,shadings}
+\usetikzlibrary{fit,shadings,calc}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage[protrusion=true]{microtype}
 
@@ -106,6 +106,7 @@ function makeDocument(infos) {
 \frenchspacing
 \begin{document}
 \pagenumbering{gobble}
+% Banner background
 \begin{tikzpicture}[remember picture, overlay]
   % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
   \node[inner sep=0,fit=(current page)] (cp){};
@@ -144,6 +145,7 @@ function makeDocument(infos) {
     lower right=hkustblue!31
   ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
 \end{tikzpicture}%
+% Spiral pattern on banner
 \begin{tikzpicture}[remember picture, overlay, scale=0.45]
   \newcounter{direction}
 
@@ -176,10 +178,41 @@ function makeDocument(infos) {
     \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/9.5] (start) -- ++(\thedirection:\currentLength) coordinate (start);
   }
 \end{tikzpicture}%
+% White rectangle to cover the rest of page
 \begin{tikzpicture}[remember picture, overlay]
   \fill[white] ([yshift=-\paperheight/6.1]current page.north west) rectangle (current page.south east);
 \end{tikzpicture}%
-%
+% Sunflower pattern
+\begin{tikzpicture}[remember picture, overlay, scale=0.32]
+  \node[inner sep=0,fit=(current page)] (cp){};
+  \def\nbrcircles {377}
+  \def\outerradius {30mm}
+  \def\deviation {.9}
+  \def\fudge {.62}
+
+  \newcounter{cumulArea}
+  \setcounter{cumulArea}{0}
+  \pgfmathsetmacro {\goldenRatio} {(1+sqrt(5))}
+  \pgfmathsetmacro {\meanArea} {pow(\outerradius * 10 / \nbrcircles, 2) * pi}
+  \pgfmathsetmacro {\minArea} {\meanArea * (1 - \deviation)}
+  \pgfmathsetmacro {\midArea} {\meanArea * (1 + \deviation) - \minArea}
+
+  \foreach \b in {0,...,\nbrcircles}{
+    % mod() must be used in order to calculate the right angle.
+    % otherwise, when \b is greater than 28 the angle is greater
+    % than 16384 and an error is raised ('Dimension too large').
+    % -- thx Tonio for this one.
+    \pgfmathsetmacro{\angle}{mod(\goldenRatio * \b, 2) * 180}
+
+    \pgfmathsetmacro{\sratio}{\b / \nbrcircles}
+    \pgfmathsetmacro{\smArea}{\minArea + \sratio * \midArea}
+    \pgfmathsetmacro{\smRadius}{sqrt(\smArea / pi) / 2 * \fudge}
+    \addtocounter{cumulArea}{\smArea};
+
+    \pgfmathparse{sqrt(\value{cumulArea} / pi) / 2}
+    \fill[color=hkustblue!78, fill opacity=(1-\sratio)/20] ([xshift=-5cm,yshift=-73cm] \angle:\pgfmathresult) circle [radius=\smRadius];
+  }
+\end{tikzpicture}%
 \begin{minipage}{0.07\textwidth}
   \vspace{-10.2em}\hspace{-3.8em}
   \scalebox{0.11}{\logo}
