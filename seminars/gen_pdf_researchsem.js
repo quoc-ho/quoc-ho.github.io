@@ -185,7 +185,7 @@ function makeDocument(infos) {
 % Sunflower pattern
 \begin{tikzpicture}[remember picture, overlay, scale=0.32]
   \node[inner sep=0,fit=(current page)] (cp){};
-  \def\nbrcircles {377}
+  \def\nbrcircles {350}
   \def\outerradius {30mm}
   \def\deviation {.9}
   \def\fudge {.62}
@@ -210,7 +210,7 @@ function makeDocument(infos) {
     \addtocounter{cumulArea}{\smArea};
 
     \pgfmathparse{sqrt(\value{cumulArea} / pi) / 2}
-    \fill[color=hkustblue!78, fill opacity=(1-\sratio)/20] ([xshift=-5cm,yshift=-73cm] \angle:\pgfmathresult) circle [radius=\smRadius];
+    \filldraw[color=hkustblue!78, fill opacity=(1-\sratio)/33, draw opacity=(1-\sratio)/8] ([xshift=-5cm,yshift=-73cm] \angle:\pgfmathresult) circle [radius=\smRadius];
   }
 \end{tikzpicture}%
 \begin{minipage}{0.07\textwidth}
