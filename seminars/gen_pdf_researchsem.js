@@ -75,16 +75,11 @@ function makeDocument(infos) {
 \documentclass[14pt, a4paper]{extarticle}
 
 \usepackage{sansmathfonts}
-%\usepackage[T1]{fontenc}
 \renewcommand*\familydefault{\sfdefault}
 
 \usepackage{amsmath,amssymb,amsthm,minibox,graphicx,tikz,qrcode}
-\usetikzlibrary{fit,shadings,calc}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage[protrusion=true]{microtype}
-
-\definecolor{hkustblue}{HTML}{153870}
-\definecolor{hkustyellow}{HTML}{916821}
 
 \setlength\parindent{0pt}
 
@@ -105,114 +100,8 @@ function makeDocument(infos) {
 
 \frenchspacing
 \begin{document}
+\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{page_background_600.jpeg}};%
 \pagenumbering{gobble}
-% Banner background
-\begin{tikzpicture}[remember picture, overlay]
-  % \fill[hkustblue!25] (current page.north west) rectangle (current page.south east);
-  \node[inner sep=0,fit=(current page)] (cp){};
-  \shade[
-    upper left=hkustblue!40,
-    lower left=hkustblue!85!hkustyellow!25,
-    upper right=hkustblue!93!hkustyellow!23,
-    lower right=hkustblue!27
-  ](cp.north west) rectangle +(4.01cm,-5cm);
-
-  \shade[
-    upper left=hkustblue!93!hkustyellow!23,
-    lower left=hkustblue!27,
-    upper right=hkustblue!99!hkustyellow!26,
-    lower right=hkustblue!27
-  ]([xshift=4cm]cp.north west) rectangle +(4.01cm,-5cm);
-
-  \shade[
-    upper left=hkustblue!99!hkustyellow!26,
-    lower left=hkustblue!27,
-    upper right=hkustblue!87!hkustyellow!24,
-    lower right=hkustblue!30
-  ]([xshift=2*4cm]cp.north west) rectangle +(4.01cm,-5cm);
-
-  \shade[
-    upper left=hkustblue!87!hkustyellow!24,
-    lower left=hkustblue!30,
-    upper right=hkustblue!21,
-    lower right=hkustblue!32
-  ]([xshift=3*4cm]cp.north west) rectangle +(4.01cm,-5cm);
-
-  \shade[
-    upper left=hkustblue!21,
-    lower left=hkustblue!32,
-    upper right=hkustblue!84!Maroon!22,
-    lower right=hkustblue!31
-  ]([xshift=4*4cm]cp.north west) rectangle ([yshift=-5cm]cp.north east);
-\end{tikzpicture}%
-% Spiral pattern on banner
-\begin{tikzpicture}[remember picture, overlay, scale=0.45]
-  \newcounter{direction}
-
-  % Initial starting point, direction, and length
-  \coordinate (start) at ([xshift=4cm,yshift=-0.5cm]current page.north east);
-  \def\initLength{5.}
-  \def\increaseAngle{92.}
-  \def\increaseLength{0.1}
-
-  % Initialize the direction counter to zero
-  \setcounter{direction}{0}
-
-  % Loop through and draw lines with varying angles and lengths
-  \foreach \i in {1,2,...,450} {
-    % Calculate current direction
-    \pgfmathtruncatemacro{\tempDirection}{mod(\thedirection+\increaseAngle,360)}
-    \setcounter{direction}{\tempDirection}
-
-    % Calculate the current length for the line segment
-    \pgfmathsetmacro{\currentLength}{\initLength + \increaseLength*\i}
-
-    % Compute color variation based on loop iteration
-    \pgfmathsetmacro{\colorFactor}{mod(\i,451)/450}
-    \pgfmathsetmacro{\colorFactorA}{1-\colorFactor/2}
-    \pgfmathsetmacro{\colorFactorB}{\colorFactor/2}
-    \pgfmathsetmacro{\colorFactorC}{\colorFactor*1.2}
-    \definecolor{currentColor}{rgb}{\colorFactorA, \colorFactorB, \colorFactorC}
-
-    % Draw a line
-    \draw[color=currentColor, line cap=round, line width=0.5mm, draw opacity=(1-\colorFactor)/9.5] (start) -- ++(\thedirection:\currentLength) coordinate (start);
-  }
-\end{tikzpicture}%
-% White rectangle to cover the rest of page
-\begin{tikzpicture}[remember picture, overlay]
-  \fill[white] ([yshift=-\paperheight/6.1]current page.north west) rectangle (current page.south east);
-\end{tikzpicture}%
-% Sunflower pattern
-\begin{tikzpicture}[remember picture, overlay, scale=0.32]
-  \node[inner sep=0,fit=(current page)] (cp){};
-  \def\nbrcircles {350}
-  \def\outerradius {30mm}
-  \def\deviation {.9}
-  \def\fudge {.62}
-
-  \newcounter{cumulArea}
-  \setcounter{cumulArea}{0}
-  \pgfmathsetmacro {\goldenRatio} {(1+sqrt(5))}
-  \pgfmathsetmacro {\meanArea} {pow(\outerradius * 10 / \nbrcircles, 2) * pi}
-  \pgfmathsetmacro {\minArea} {\meanArea * (1 - \deviation)}
-  \pgfmathsetmacro {\midArea} {\meanArea * (1 + \deviation) - \minArea}
-
-  \foreach \b in {0,...,\nbrcircles}{
-    % mod() must be used in order to calculate the right angle.
-    % otherwise, when \b is greater than 28 the angle is greater
-    % than 16384 and an error is raised ('Dimension too large').
-    % -- thx Tonio for this one.
-    \pgfmathsetmacro{\angle}{mod(\goldenRatio * \b, 2) * 180}
-
-    \pgfmathsetmacro{\sratio}{\b / \nbrcircles}
-    \pgfmathsetmacro{\smArea}{\minArea + \sratio * \midArea}
-    \pgfmathsetmacro{\smRadius}{sqrt(\smArea / pi) / 2 * \fudge}
-    \addtocounter{cumulArea}{\smArea};
-
-    \pgfmathparse{sqrt(\value{cumulArea} / pi) / 2}
-    \filldraw[color=hkustblue!78, fill opacity=(1-\sratio)/33, draw opacity=(1-\sratio)/8] ([xshift=-5cm,yshift=-73cm] \angle:\pgfmathresult) circle [radius=\smRadius];
-  }
-\end{tikzpicture}%
 \begin{minipage}{0.07\textwidth}
   \vspace{-10.2em}\hspace{-3.8em}
   \scalebox{0.11}{\logo}
@@ -277,6 +166,10 @@ async function compile(document) {
           "path": "HKUST_logo.pdf",
           "url": "https://quocho.com/seminars/HKUST_logo.pdf"
         },
+        {
+          "path": "page_background_600.jpeg",
+          "url": "https://quocho.com/seminars/page_background_600.jpeg"
+        }
       ],
     })
   });
@@ -301,9 +194,11 @@ function insertPdfLink(url) {
 
 async function zipContent(source) {
   let zip = new JSZip();
-  let logo = await fetch('https://quocho.com/seminars/HKUST_logo.pdf').then(res => res.blob())
+  let logo = await fetch('https://quocho.com/seminars/HKUST_logo.pdf').then(res => res.blob());
+  let background = await fetch('https://quocho.com/seminars/page_background_600.jpeg').then(res => res.blob());
   zip.file("AGSeminar.tex", source);
   zip.file('HKUST_logo.pdf', logo);
+  zip.file('page_background_600.jpeg', background);
   let zipBlob = await zip.generateAsync({ type: "blob" });
   let zipBase64 = await blobToBase64(zipBlob);
 
