@@ -1,4 +1,10 @@
-async function compile(document) {
+async function getResources() {
+  let logo = await fetch('HKUST_logo.pdf').then(res => res.arrayBuffer());
+  let background = await fetch('page_background_600.jpeg').then(res => res.arrayBuffer());
+  return { logo: logo, background: background };
+}
+
+async function compile(document, resources) {
   let response = await fetch('https://latex.ytotech.com/builds/sync', {
     method: 'POST',
     headers: {
@@ -13,11 +19,11 @@ async function compile(document) {
         },
         {
           "path": "HKUST_logo.pdf",
-          "url": "https://quocho.com/seminars/HKUST_logo.pdf"
+          "file": arrayBufferToBase64(resources.logo)
         },
         {
           "path": "page_background_600.jpeg",
-          "url": "https://quocho.com/seminars/page_background_600.jpeg"
+          "file": arrayBufferToBase64(resources.background)
         }
       ],
     })
@@ -41,10 +47,10 @@ function insertPdfLink(url) {
   document.body.appendChild(pdfViewer);
 }
 
-async function zipContent(source) {
+async function zipContentBase64(source, resources) {
   let zip = new JSZip();
-  let logo = await fetch('https://quocho.com/seminars/HKUST_logo.pdf').then(res => res.blob());
-  let background = await fetch('https://quocho.com/seminars/page_background_600.jpeg').then(res => res.blob());
+  let logo = new Blob([resources.logo]);
+  let background = new Blob([resources.background]);
   zip.file("AGSeminar.tex", source);
   zip.file('HKUST_logo.pdf', logo);
   zip.file('page_background_600.jpeg', background);
@@ -69,13 +75,24 @@ function blobToBase64(blob) {
   });
 };
 
+function arrayBufferToBase64(buffer) {
+  var binary = '';
+  var bytes = new Uint8Array(buffer);
+  var len = bytes.byteLength;
+  for (var i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return window.btoa(binary);
+}
+
 
 async function doIt() {
   let info = await getInfo();
+  let resources = await getResources()
   let document = makeDocument(info);
-  let base64Content = await zipContent(document);
+  let base64Content = await zipContentBase64(document, resources);
   toOverleaf(base64Content);
-  let url = await compile(document);
+  let url = await compile(document, resources);
   insertPdfLink(url);
 }
 
