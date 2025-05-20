@@ -100,7 +100,12 @@ function makeDocument(infos) {
 
 \frenchspacing
 \begin{document}
-\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{page_background_600.jpeg}};%
+% Banner background
+\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{new_page_background.png}};%
+% White rectangle to cover the rest of page
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[white, fill opacity=0.45] ([yshift=-4.99cm]current page.north west) rectangle (current page.south east);
+\end{tikzpicture}%
 \pagenumbering{gobble}
 \begin{minipage}{0.07\textwidth}
   \vspace{-10.2em}\hspace{-3.8em}
