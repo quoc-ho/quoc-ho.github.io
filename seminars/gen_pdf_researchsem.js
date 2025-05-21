@@ -1,6 +1,6 @@
 async function getResources() {
   let logo = await fetch('HKUST_logo.pdf').then(res => res.arrayBuffer());
-  let background = await fetch('new_page_background.png').then(res => res.arrayBuffer());
+  let background = await fetch('new_page_background.jpeg').then(res => res.arrayBuffer());
   return { logo: logo, background: background };
 }
 
@@ -22,7 +22,7 @@ async function compile(document, resources) {
           "file": arrayBufferToBase64(resources.logo)
         },
         {
-          "path": "new_page_background.png",
+          "path": "new_page_background.jpeg",
           "file": arrayBufferToBase64(resources.background)
         }
       ],
@@ -53,7 +53,7 @@ async function zipContentBase64(source, resources) {
   let background = new Blob([resources.background]);
   zip.file("AGSeminar.tex", source);
   zip.file('HKUST_logo.pdf', logo);
-  zip.file('new_page_background.png', background);
+  zip.file('new_page_background.jpeg', background);
   let zipBlob = await zip.generateAsync({ type: "blob" });
   let zipBase64 = await blobToBase64(zipBlob);
 

@@ -101,7 +101,7 @@ function makeDocument(infos) {
 \frenchspacing
 \begin{document}
 % Banner background
-\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{new_page_background.png}};%
+\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{new_page_background.jpeg}};%
 % White rectangle to cover the rest of page
 \begin{tikzpicture}[remember picture, overlay]
   \fill[white, fill opacity=0.60] ([yshift=-4.89cm]current page.north west) rectangle (current page.south east);
