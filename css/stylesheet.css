@@ -126,7 +126,7 @@ ol li ol li {
 .papers>content>paperHead {
   cursor: pointer;
   display: block;
-  line-height: 115%;
+  line-height: 120%;
 }
 
 .papers>content>p {
@@ -189,6 +189,7 @@ ol li ol li {
 .papers div.abstract abstractTit {
   font-weight: bold;
   color:#404040;
+  font-size: 90%;
 }
 
 .papers>links {
