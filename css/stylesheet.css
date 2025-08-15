@@ -199,8 +199,16 @@ ol li ol li {
   color:#404040;
 }
 
-.papers links a {
+.papers>links>a {
   font-size: 93%;
+  box-shadow: inset 0 0 0 0 #0047a3;
+  color: #0047a3;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.papers>links>a:hover {
+  box-shadow: inset 0 -100px 0 0 #0047a3;
+  color: white;
 }
 
 .bibliography table {
