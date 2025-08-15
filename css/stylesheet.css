@@ -125,14 +125,14 @@ ol li ol li {
   cursor:pointer;
   display: block;
   font-weight: lighter;
+  line-height: 105%;
 }
 
-/* .papers>content>p {
+.papers>content>p {
   padding: 0em;
   margin: 0em 0em;
   text-align: justify;
-  font-weight: 900;
-} */
+}
 
 /* .papers>content>em {
   font-size: 95%;
@@ -151,6 +151,7 @@ ol li ol li {
   margin: 0em 0em;
   font-size: 90%;
   display: block;
+  color: #606060;
 }
 
 .papers>content>paperHead>em {
@@ -161,7 +162,7 @@ ol li ol li {
 .papers>content>paperHead>journal {
   font-size: 85%;
   font-weight: 520;
-  color:#606060;
+  color:#656565;
 }
 
 .papers>content>paperHead>prepub {
@@ -171,9 +172,8 @@ ol li ol li {
   font-weight: lighter;
   font-style: italic;
   display: block;
-  color:#656565;
+  color:#606060;
 }
-
 
 .papers>content>div.abstract {
   max-height: 0px;
@@ -197,7 +197,7 @@ ol li ol li {
 .papers div.abstract abstractTit {
   font-weight: bold;
   font-size: 90%;
-  color:#303030;
+  color:#404040;
 }
 
 .papers links a {
