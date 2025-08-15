@@ -179,6 +179,7 @@ ol li ol li {
   margin-block-end: 0em;
   text-align: justify;
   font-family: 'URWClassico', sans-serif;
+  line-height: 130%;
 }
 
 .papers div.abstract>p:not(:first-child) {
