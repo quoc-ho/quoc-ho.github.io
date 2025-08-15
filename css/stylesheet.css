@@ -38,7 +38,7 @@
     flex-direction: row;
   }
   .papers content {
-    flex-basis: 78%;
+    flex-basis: 75%;
     margin: 0.8em 0em;
   }  
   links {
@@ -114,7 +114,6 @@ ol li ol li {
 
 .papers {
   padding: 0em;
-  margin: -0.5em 0em;
   font-size: 97%;
   border-top: dotted 0.05em;
   display: flex;
