@@ -24,7 +24,10 @@
   }
   links {
     margin-top: 0em;
-  }  
+  }
+  .papers>content>paperHead>pTitle {
+    padding-top: 3px;
+  } 
 }
 
 @media screen and (min-width: 1000px) {
@@ -43,7 +46,7 @@
   }  
   links {
     margin-top: 0.55em;
-  }  
+  }
 }
 
 body {
@@ -114,7 +117,6 @@ ol li ol li {
 
 .papers {
   padding: 0em;
-  font-size: 97%;
   border-top: dotted 0.05em;
   display: flex;
   flex-direction: column;
@@ -133,11 +135,6 @@ ol li ol li {
   text-align: justify;
 }
 
-/* .papers>content>em {
-  font-size: 95%;
-  font-weight: lighter;
-} */
-
 .papers>content>paperHead>pTitle {
   padding: 0em;
   margin: 0em 0em;
@@ -148,18 +145,15 @@ ol li ol li {
 .papers>content>paperHead>coAuth {
   padding: 0em;
   margin: 0em 0em;
-  font-size: 90%;
   display: block;
   color: #606060;
 }
 
 .papers>content>paperHead>em {
-  font-size: 85%;
   font-weight: lighter;
 }
 
 .papers>content>paperHead>journal {
-  font-size: 85%;
   font-weight: 520;
   color:#707070;
 }
@@ -167,7 +161,6 @@ ol li ol li {
 .papers>content>paperHead>prepub {
   padding: 0em;
   margin: 0em 0em;
-  font-size: 85%;
   font-weight: lighter;
   font-style: italic;
   display: block;
@@ -195,7 +188,6 @@ ol li ol li {
 
 .papers div.abstract abstractTit {
   font-weight: bold;
-  font-size: 90%;
   color:#404040;
 }
 
@@ -206,7 +198,7 @@ ol li ol li {
 .papers>links>a {
   font-size: 93%;
   box-shadow: inset 0 0 0 0 #959aa8;
-  color: #959aa8;
+  color: #6d7281;
   transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
