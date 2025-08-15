@@ -167,14 +167,14 @@ ol li ol li {
   color:#606060;
 }
 
-.papers>content>div.abstract {
+.papers>content div.abstract {
   max-height: 0px;
   transition: max-height 0.14s ease-out;
   overflow: hidden;
+  font-size: 93%;
 }
 
 .papers div.abstract>p {
-  font-size: 93%;
   margin-block-start: 0.25em;
   margin-block-end: 0em;
   text-align: justify;
