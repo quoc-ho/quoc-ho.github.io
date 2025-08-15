@@ -114,7 +114,8 @@ ol li ol li {
 
 .papers {
   padding: 0em;
-  margin: 0em;
+  margin: -0.5em 0em;
+  font-size: 97%;
   border-top: dotted 0.05em;
   display: flex;
   flex-direction: column;
@@ -122,10 +123,9 @@ ol li ol li {
 }
 
 .papers>content>paperHead {
-  cursor:pointer;
+  cursor: pointer;
   display: block;
-  font-weight: lighter;
-  line-height: 105%;
+  line-height: 115%;
 }
 
 .papers>content>p {
@@ -162,7 +162,7 @@ ol li ol li {
 .papers>content>paperHead>journal {
   font-size: 85%;
   font-weight: 520;
-  color:#656565;
+  color:#707070;
 }
 
 .papers>content>paperHead>prepub {
