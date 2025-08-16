@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'URWClassico';
-    src: url('/assets/fonts/URWClassico-BolIta.woff2') format('woff2'),
-        url('/assets/fonts/URWClassico-BolIta.woff') format('woff');
+    src: url('URWClassico-BolIta.woff2') format('woff2'),
+        url('URWClassico-BolIta.woff') format('woff');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'URWClassico';
-    src: url('/assets/fonts/URWClassico-Bol.woff2') format('woff2'),
-        url('/assets/fonts/URWClassico-Bol.woff') format('woff');
+    src: url('URWClassico-Bol.woff2') format('woff2'),
+        url('URWClassico-Bol.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: 'URWClassico';
-    src: url('/assets/fonts/URWClassico-Ita.woff2') format('woff2'),
-        url('/assets/fonts/URWClassico-Ita.woff') format('woff');
+    src: url('URWClassico-Ita.woff2') format('woff2'),
+        url('URWClassico-Ita.woff') format('woff');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -27,8 +27,8 @@
 
 @font-face {
     font-family: 'URWClassico';
-    src: url('/assets/fonts/URWClassico-Reg.woff2') format('woff2'),
-        url('/assets/fonts/URWClassico-Reg.woff') format('woff');
+    src: url('URWClassico-Reg.woff2') format('woff2'),
+        url('URWClassico-Reg.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
