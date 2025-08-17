@@ -169,7 +169,7 @@ ol li ol li {
 
 .papers>content div.abstract {
   max-height: 0px;
-  transition: max-height 0.14s ease-out;
+  transition: max-height 0.22s ease-in-out;
   overflow: hidden;
   font-size: 93%;
 }
@@ -191,6 +191,7 @@ ol li ol li {
   font-weight: bold;
   color:#404040;
   font-size: 90%;
+  line-height: 100%;
 }
 
 .papers>links {
@@ -206,7 +207,7 @@ ol li ol li {
 
 .papers>links>a:hover {
   box-shadow: inset 0 -100px 0 0 #20497d;
-  color: white;
+  color: #f0f1f4;
 }
 
 .bibliography table {
