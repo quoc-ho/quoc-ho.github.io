@@ -168,7 +168,7 @@ ol li ol li {
 
 .papers>content div.abstract {
   max-height: 0px;
-  transition: max-height 0.25s ease-in;
+  transition: max-height 0.25s ease;
   overflow: hidden;
   font-size: 93%;
 }
