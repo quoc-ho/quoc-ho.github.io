@@ -5,7 +5,6 @@ function toggleAbstracts(el) {
 }
 
 function toggleMe(me) {
-    console.log(me);
     if (me.style.maxHeight)
         me.style.maxHeight = null;
     else 
