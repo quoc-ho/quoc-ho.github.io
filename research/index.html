@@ -15,6 +15,21 @@
       },
       output: {
         font: 'mathjax-fira'
+      },
+      loader: {
+        paths: {
+          font: 'https://cdn.jsdelivr.net/npm/@mathjax',
+          'mathjax-euler-extension': '[font]/mathjax-euler-font-extension',
+        },
+        load: ['[mathjax-euler-extension]/chtml']
+      },
+      startup: {
+        ready() {
+          MathJax.startup.defaultReady();
+          MathJax._.output.fonts.generic = {
+            chtml_ts: {GenericFont: MathJax._.output.fonts['mathjax-fira'].chtml_ts.MathJaxFiraFont}
+          }
+        }
       }
     };
   </script>
@@ -76,15 +91,22 @@
 
   <newcommand>
     \(
+    \newcommand{\bounded}{\mathsf{b}}
     \newcommand{\CC}{\mathbb{C}}
     \newcommand{\Ch}{\mathsf{Ch}}
+    \newcommand{\compct}{\mathsf{c}}
     \newcommand{\DG}{\mathsf{DG}}
+    \newcommand{\Dsk}{\mathsf{D}}
+    \newcommand{\En}{\mathsf{E}}
     \newcommand{\Fqbar}{\overline{\mathbb{F}}_q}
     \newcommand{\gr}{\mathsf{gr}}
     \newcommand{\Hilb}{\mathsf{Hilb}}
     \newcommand{\Hecke}{\mathsf{H}}
+    \newcommand{\IndCoh}{\mathsf{IndCoh}}
+    \newcommand{\LocSys}{\mathsf{LocSys}}
     \newcommand{\mixed}{\mathsf{m}}
     \newcommand{\SBim}{\mathsf{SBim}}
+    \newcommand{\Sphere}{\mathsf{S}}
     \newcommand{\Shv}{\mathsf{Shv}}
     \)
   </newcommand>
@@ -131,7 +153,7 @@
           Artin stacks. In particular, we obtain a general construction of graded lifts of many categories arising in
           geometric representation theory and categorified knot invariants. Our new theory associates to each Artin
           stack of finite type $\mathcal{Y}$ over $\Fqbar$ a symmetric monoidal $\DG$-category $\Shv_{\gr,
-          c}(\mathcal{Y})$ of constructible graded sheaves on $\mathcal{Y}$ along with the six-functor formalism, a
+          \compct}(\mathcal{Y})$ of constructible graded sheaves on $\mathcal{Y}$ along with the six-functor formalism, a
           perverse $t$-structure, and a weight (or co-$t$-)structure in the sense of Bondarko and Pauksztello,
           compatible with the six-functor formalism, perverse $t$-structures, and Frobenius weights on the category of
           (mixed) $\ell$-adic sheaves.
@@ -139,10 +161,10 @@
         <p>
           Classically, mixed versions were only constructed in very special cases due to non-semisimplicity of
           Frobenius. Our construction sidesteps this issue by semi-simplifying the Frobenius action itself. However, the
-          category $\Shv_{\gr, c}(\mathcal{Y})$ agrees with those previously constructed when they are available. For
+          category $\Shv_{\gr, \compct}(\mathcal{Y})$ agrees with those previously constructed when they are available. For
           example, for any reductive group $G$ with a fixed pair $T\subset B$ of a maximal torus and a Borel subgroup,
-          we have an equivalence of monoidal $\DG$ weight categories $\Shv_{\gr, c}(B\backslash G/B) \simeq
-          \Ch^b(\SBim_W)$, where $\Ch^b(\SBim_W)$ is the monoidal $\DG$-category of bounded chain complexes of Soergel
+          we have an equivalence of monoidal $\DG$ weight categories $\Shv_{\gr, \compct}(B\backslash G/B) \simeq
+          \Ch^{\bounded}(\SBim_W)$, where $\Ch^{\bounded}(\SBim_W)$ is the monoidal $\DG$-category of bounded chain complexes of Soergel
           bimodules and $W$ is the Weyl group of $G$.
         </p>
       </div>
@@ -164,7 +186,7 @@
         <p>
           <abstractTit>Abstract:</abstractTit> Using a geometric argument building on our new theory of graded sheaves,
           we compute the categorical trace and Drinfel'd center of the (graded) finite Hecke category $\Hecke_W^\gr =
-          \Ch^b(\SBim_W)$ in terms of the category of (graded) unipotent character sheaves, upgrading results of
+          \Ch^{\bounded}(\SBim_W)$ in terms of the category of (graded) unipotent character sheaves, upgrading results of
           Ben-Zvi&ndash;Nadler and Bezrukavnikov&ndash;Finkelberg&ndash;Ostrik. In type $A$, we relate the categorical
           trace to the category of $2$-periodic coherent sheaves on the Hilbert schemes $\Hilb_n(\CC^2)$ of points on
           $\CC^2$ (equivariant with respect to the natural $\CC^* \times \CC^*$ action), yielding a proof of (a
@@ -251,36 +273,14 @@
       </paperHead>
       <div class="abstract">
         <p>
-          <abstractTit>Abstract:</abstractTit> Motivated by spectral gluing patterns in the Betti Langlands program, we
-          show that for any reductive group \(\mathsfit{G}\), a parabolic subgroup \(\mathsfit{P}\), and a topological
-          surface \(\mathsfit{M}\), the
-          (enhanced) spectral Eisenstein series category of \(\mathsfit{M}\) is the factorization homology over
-          \(\mathsfit{M}\) of the
-          \(\mathsf{E_2}\)-Hecke category \(\mathsf{H}_{\mathsfit{G}, \mathsfit{P}} =
-          \mathsf{IndCoh}(\mathsf{LS}_{\mathsfit{G, P}}(\mathsf{D^2, S^1}))\), where \(\mathsf{LS}_{\mathsfit{G,
-          P}}(\mathsf{D^2, S^1})\) denotes the moduli stack of \(\mathsfit{G}\)-local systems on a disk together with a
-          \(\mathsfit{P}\)-reduction on
-          the boundary circle.
-        </p>
-        <p>
-          More generally, for any pair of stacks \(\mathcal{Y}\to \mathcal{Z}\) satisfying some mild conditions and any
-          map between topological spaces \(\mathsfit{N}\to \mathsfit{M}\), we define \((\mathcal{Y}\mathsf{,}
-          \mathcal{Z})^{\mathsfit{N, M}} = \mathcal{Y}^\mathsfit{N}
-          \times_{\mathcal{Z}^\mathsfit{N}} \mathcal{Z}^\mathsfit{M}\) to be the space of maps from \(\mathsfit{M}\) to
-          \(\mathcal{Z}\) along with a lift
-          to \(\mathcal{Y}\) of its restriction to \(\mathsfit{N}\). Using the pair of pants construction, we define an
-          \(\mathsf{E}_\mathsf{n}\)-category \(\mathsf{H}_\mathsf{n}(\mathcal{Y}\mathsf{,} \mathcal{Z}) =
-          \mathsf{IndCoh}_\mathsf{0}(((\mathcal{Y}\mathsf{,}
-          \mathcal{Z})^{\mathsf{S}^{\mathsfit{n-1}}\mathsf{,} \mathsf{D}^\mathsf{n}})^\wedge_{\mathcal{Y}})\) and
-          compute its factorization homology on
-          any \(\mathsfit{d}\)-dimensional manifold \(\mathsfit{M}\) with \(\mathsfit{d\leq n}\), \[\int_\mathsfit{M}
-          \mathsf{H}_\mathsf{n}(\mathcal{Y}\mathsf{,} \mathcal{Z}) \simeq
-          \mathsf{IndCoh}_\mathsf{0}\left(\left((\mathcal{Y}\mathsf{,}
-          \mathcal{Z})^{\partial (\mathsfit{M}\times \mathsf{D}^{\mathsfit{n-d}})\mathsf{,}
-          \mathsfit{M}}\right)^\wedge_{\mathcal{Y}^\mathsfit{M}}\right), \] where
-          \(\mathsf{IndCoh_0}\) is the sheaf theory introduced by Arinkin&ndash;Gaitsgory and Beraldo. Our result
-          naturally
-          extends previous known computations of Ben-Zvi&ndash;Francis&ndash;Nadler and Beraldo.
+          <abstractTit>Abstract:</abstractTit> Motivated by spectral gluing patterns in the Betti Langlands program, we show that for any reductive group $G$, a parabolic subgroup $P$, and a topological surface $M$, the (enhanced) spectral Eisenstein series category of $M$ is the factorization homology over $M$ of the $\En_2$-Hecke category $\Hecke_{G, P} = \IndCoh(\LocSys_{G, P}(\Dsk^2, \Sphere^1))$, where $\LocSys_{G, P}(\Dsk^2, \Sphere^1)$ denotes the moduli stack of $G$-local systems on a disk together with a $P$-reduction on the boundary circle.
+          </p>
+
+        <p>More generally, for any pair of stacks $\mathcal{Y}\to \mathcal{Z}$ satisfying some mild conditions and any map between topological spaces $N\to M$, we define $(\mathcal{Y}, \mathcal{Z})^{N, M} = \mathcal{Y}^N \times_{\mathcal{Z}^N} \mathcal{Z}^M$ to be the space of maps from $M$ to $\mathcal{Z}$ along with a lift to $\mathcal{Y}$ of its restriction to $N$. Using the pair of pants construction, we define an $\En_n$-category $\Hecke_n(\mathcal{Y}, \mathcal{Z}) = \IndCoh_0\left(\left((\mathcal{Y}, \mathcal{Z})^{\Sphere^{n-1}, \Dsk^n}\right)^\wedge_{\mathcal{Y}}\right)$ and compute its factorization homology on any $d$-dimensional manifold $M$ with $d\leq n$,
+        \[
+          \int_M \Hecke_n(\mathcal{Y}, \mathcal{Z}) \simeq \IndCoh_0\left(\left((\mathcal{Y}, \mathcal{Z})^{\partial (M\times \Dsk^{n-d}), M}\right)^\wedge_{\mathcal{Y}^M}\right),
+        \]
+        where $\IndCoh_0$ is the sheaf theory introduced by Arinkin&ndash;Gaitsgory and Beraldo. Our result naturally extends previous known computations of Ben-Zvi&ndash;Francis&ndash;Nadler and Beraldo.
         </p>
       </div>
 
